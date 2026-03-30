@@ -32,7 +32,7 @@ def find_event(event_id):
 def create_event():
     data = request.get_json()
 
-    # Input validation
+    # Validate input
     if not data or "title" not in data:
         return jsonify({"error": "Title is required"}), 400
 
@@ -73,7 +73,8 @@ def delete_event(event_id):
 
     events.remove(event)
 
-    return jsonify({"message": "Event deleted successfully"}), 200
+    # IMPORTANT: 204 means NO CONTENT
+    return '', 204
 
 
 if __name__ == "__main__":
